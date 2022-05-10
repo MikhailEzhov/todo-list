@@ -1,9 +1,10 @@
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 
 
-function CaseAddForm() {
+function CaseAddForm(props) {
 
 
     const [caseName, setCaseName] = useState('');
@@ -11,12 +12,12 @@ function CaseAddForm() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
         const newCase = {
-            name: caseName
-        }
+            name: caseName,
+            id: uuidv4()
+        };
+        props.addCase(newCase);
         // console.log(newCase);
-
         setCaseName('');
     }
 

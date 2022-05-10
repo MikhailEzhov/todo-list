@@ -1,21 +1,38 @@
-import CaseAddForm from '../caseAddForm/CaseAddForm';
+import { useState } from 'react';
 
-import './App.css';
+import CaseAddForm from '../caseAddForm/CaseAddForm';
+import CaseList from '../caseList/CaseList';
+
+import './app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
 function App() {
-  return (
-    <div className="app">
 
-      <div className="block">
-        <CaseAddForm/>
-      </div>
+    const [cases, setCases] = useState([]);
+    // console.log(cases);
 
 
-    </div>
-  );
+    const addCase = (obj) => {
+        const newArr = [...cases, obj];
+        setCases(cases => newArr);
+    };
+
+
+    return (
+        <div className="app">
+
+            <div className="block">
+                <CaseAddForm addCase={addCase}/>
+            </div>
+
+            <div className="block">
+                <CaseList cases={cases}/>
+            </div>
+
+        </div>
+    );
 }
 
 export default App;
