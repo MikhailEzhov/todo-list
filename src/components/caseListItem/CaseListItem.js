@@ -1,12 +1,24 @@
-import { ListGroup } from 'react-bootstrap';
+import { ListGroup, Row, Col, Button } from 'react-bootstrap';
 
 
 
-function CaseListItem({name}) {
+function CaseListItem({name, onDelete}) {
 
     return(
         <ListGroup.Item as="li">
-            {name}
+            <Row>
+                <Col>
+                    {name}
+                </Col>
+                <Col>
+                    <Button 
+                        variant="outline-danger" 
+                        size="sm"
+                        onClick={onDelete}
+                        >delete
+                    </Button>
+                </Col>
+            </Row>
         </ListGroup.Item>
     )
 }

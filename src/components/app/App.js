@@ -19,6 +19,10 @@ function App() {
         setCases(cases => newArr);
     };
 
+    const onDelete = (id) => {
+        setCases(cases => cases.filter(item => item.id !== id));
+    }
+
 
     return (
         <div className="app">
@@ -28,7 +32,7 @@ function App() {
             </div>
 
             <div className="block">
-                <CaseList cases={cases}/>
+                <CaseList cases={cases} onDelete={onDelete}/>
             </div>
 
         </div>

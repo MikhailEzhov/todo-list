@@ -3,7 +3,7 @@ import { ListGroup } from 'react-bootstrap';
 
 
 
-function CaseList({cases}) {
+function CaseList({cases, onDelete}) {
 
     const elements = cases.map(item => {
         const {id, ...itemProps} = item;
@@ -11,6 +11,7 @@ function CaseList({cases}) {
             <CaseListItem 
                 key={id} 
                 {...itemProps}
+                onDelete={() => onDelete(id)}
             />
         )
     })
