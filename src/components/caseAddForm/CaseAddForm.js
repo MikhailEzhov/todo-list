@@ -19,7 +19,8 @@ function CaseAddForm(props) {
 
         const newCase = {
             name: caseName,
-            id: uuidv4()
+            id: uuidv4(),
+            status: false
         };
         props.addCase(newCase);
         // console.log(newCase);

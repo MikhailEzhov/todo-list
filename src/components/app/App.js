@@ -23,6 +23,14 @@ function App() {
         setCases(cases => cases.filter(item => item.id !== id));
     }
 
+    const onToggleStatus = (id) => {
+        setCases(cases => cases.map(item => {
+            if (item.id === id) {
+                return {...item, status: !item.status}
+            }
+            return item;
+        }))
+    }
 
     return (
         <div className="app">
@@ -32,7 +40,11 @@ function App() {
             </div>
 
             <div className="block">
-                <CaseList cases={cases} onDelete={onDelete}/>
+                <CaseList 
+                    cases={cases} 
+                    onDelete={onDelete}
+                    onToggleStatus={onToggleStatus}
+                />
             </div>
 
         </div>

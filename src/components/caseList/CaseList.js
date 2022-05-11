@@ -3,7 +3,7 @@ import { ListGroup } from 'react-bootstrap';
 
 
 
-function CaseList({cases, onDelete}) {
+function CaseList({cases, onDelete, onToggleStatus}) {
 
     const elements = cases.map(item => {
         const {id, ...itemProps} = item;
@@ -12,6 +12,7 @@ function CaseList({cases, onDelete}) {
                 key={id} 
                 {...itemProps}
                 onDelete={() => onDelete(id)}
+                onToggleStatus={() => onToggleStatus(id)}
             />
         )
     })
