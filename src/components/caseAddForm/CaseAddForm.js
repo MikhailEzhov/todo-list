@@ -12,6 +12,11 @@ function CaseAddForm(props) {
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        if(caseName.length < 1) {
+            return;
+        }
+
         const newCase = {
             name: caseName,
             id: uuidv4()
