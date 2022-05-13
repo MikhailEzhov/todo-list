@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import CaseAddForm from '../caseAddForm/CaseAddForm';
 import CaseList from '../caseList/CaseList';
+import FilterCases from '../filterCases/FilterCases';
 
 import './app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,7 +12,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
     const [cases, setCases] = useState([]);
-    // console.log(cases);
+    const [filter, setFilter] = useState('all');
+    // console.log(filter);
 
 
     const addCase = (obj) => {
@@ -19,9 +21,11 @@ function App() {
         setCases(cases => newArr);
     };
 
+
     const onDelete = (id) => {
         setCases(cases => cases.filter(item => item.id !== id));
     }
+
 
     const onToggleStatus = (id) => {
         setCases(cases => cases.map(item => {
@@ -32,6 +36,23 @@ function App() {
         }))
     }
 
+
+    const onSelectFilter = (option) => {
+        setFilter(filter => option);
+    }
+
+    const filteredCases = (cases, filter) => {
+        switch (filter) {
+            case 'done':
+                return cases.filter(item => item.status === true);
+            case 'not done':
+                return cases.filter(item => item.status === false);
+            default:
+                return cases;
+        }
+    }
+
+
     return (
         <div className="app">
 
@@ -40,8 +61,12 @@ function App() {
             </div>
 
             <div className="block">
+                <FilterCases onSelectFilter={onSelectFilter}/>
+            </div>
+
+            <div className="block">
                 <CaseList 
-                    cases={cases} 
+                    cases={filteredCases(cases, filter)} 
                     onDelete={onDelete}
                     onToggleStatus={onToggleStatus}
                 />
