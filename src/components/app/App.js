@@ -53,6 +53,11 @@ function App() {
     }
 
 
+    const counterAll = cases.length;
+    const counterDone = cases.filter(item => item.status === true).length;
+    const counterNotDone = cases.filter(item => item.status === false).length;
+
+
     return (
         <div className="app">
 
@@ -61,7 +66,12 @@ function App() {
             </div>
 
             <div className="block">
-                <FilterCases onSelectFilter={onSelectFilter}/>
+                <FilterCases 
+                    onSelectFilter={onSelectFilter}
+                    counterAll={counterAll}
+                    counterDone={counterDone}
+                    counterNotDone={counterNotDone}
+                />
             </div>
 
             <div className="block">
