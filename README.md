@@ -1,6 +1,6 @@
 # todo-list
 
-**My job:** [mikhailezhov.github.io/todo-list/](mikhailezhov.github.io/todo-list/)
+**My job:** [https://mikhailezhov.github.io/todo-list/](https://mikhailezhov.github.io/todo-list/)
 
 Created with *create-react-app*. See the [full create-react-app guide](https://github.com/facebook/create-react-app#readme)
 
