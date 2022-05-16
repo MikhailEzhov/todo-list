@@ -2,8 +2,7 @@ import { ListGroup, Row, Col, Button, Badge } from 'react-bootstrap';
 
 
 
-function CaseListItem({name, onDelete, status, onToggleStatus}) {
-
+function CaseListItem({name, status, deleteCase, toggleStatus}) {
 
     return(
         <ListGroup.Item as="li">
@@ -15,7 +14,7 @@ function CaseListItem({name, onDelete, status, onToggleStatus}) {
                     <Badge 
                         pill 
                         bg="secondary"  
-                        onClick={onToggleStatus} 
+                        onClick={toggleStatus} 
                         style={{ cursor: 'pointer' }}
                         >
                         {status ? 'done' : 'not done'}
@@ -25,7 +24,7 @@ function CaseListItem({name, onDelete, status, onToggleStatus}) {
                     <Button 
                         variant="outline-danger" 
                         size="sm"
-                        onClick={onDelete}
+                        onClick={deleteCase}
                         >delete
                     </Button>
                 </Col>

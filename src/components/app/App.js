@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import CaseAddForm from '../caseAddForm/CaseAddForm';
 import CaseList from '../caseList/CaseList';
 import FilterCases from '../filterCases/FilterCases';
@@ -11,75 +9,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-    const [cases, setCases] = useState([]);
-    const [filter, setFilter] = useState('all');
-    // console.log(filter);
-
-
-    const addCase = (obj) => {
-        const newArr = [...cases, obj];
-        setCases(cases => newArr);
-    };
-
-
-    const onDelete = (id) => {
-        setCases(cases => cases.filter(item => item.id !== id));
-    }
-
-
-    const onToggleStatus = (id) => {
-        setCases(cases => cases.map(item => {
-            if (item.id === id) {
-                return {...item, status: !item.status}
-            }
-            return item;
-        }))
-    }
-
-
-    const onSelectFilter = (option) => {
-        setFilter(filter => option);
-    }
-
-    const filteredCases = (cases, filter) => {
-        switch (filter) {
-            case 'done':
-                return cases.filter(item => item.status === true);
-            case 'not done':
-                return cases.filter(item => item.status === false);
-            default:
-                return cases;
-        }
-    }
-
-
-    const counterAll = cases.length;
-    const counterDone = cases.filter(item => item.status === true).length;
-    const counterNotDone = cases.filter(item => item.status === false).length;
-
-
     return (
         <div className="app">
 
             <div className="block">
-                <CaseAddForm addCase={addCase}/>
+                <CaseAddForm/>
             </div>
 
             <div className="block">
-                <FilterCases 
-                    onSelectFilter={onSelectFilter}
-                    counterAll={counterAll}
-                    counterDone={counterDone}
-                    counterNotDone={counterNotDone}
-                />
+                <FilterCases/>
             </div>
 
             <div className="block">
-                <CaseList 
-                    cases={filteredCases(cases, filter)} 
-                    onDelete={onDelete}
-                    onToggleStatus={onToggleStatus}
-                />
+                <CaseList/>
             </div>
 
         </div>

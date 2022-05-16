@@ -2,12 +2,16 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import { useDispatch } from 'react-redux';
+import { addCase } from '../../actions/actions';
+
 
 
 function CaseAddForm(props) {
 
-
     const [caseName, setCaseName] = useState('');
+
+    const dispatch = useDispatch();
 
 
     const onSubmit = (e) => {
@@ -15,15 +19,16 @@ function CaseAddForm(props) {
 
         if(caseName.length < 1) {
             return;
-        }
+        };
 
         const newCase = {
             name: caseName,
             id: uuidv4(),
             status: false
         };
-        props.addCase(newCase);
-        // console.log(newCase);
+
+        dispatch(addCase(newCase));
+
         setCaseName('');
     }
 
